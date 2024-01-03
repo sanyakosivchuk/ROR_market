@@ -1,5 +1,5 @@
 # README
 
-Todey we larn ruby
-Anonimous Rubist Club (ARC)
+Today we are going to learn ruby
+Anonymous Rubyist Club(ARC)
 * ...
