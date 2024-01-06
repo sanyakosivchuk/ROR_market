@@ -1,5 +1,6 @@
 <h1>Продукт</h1>
 <p><b><%= @product.name %></b></p>
+<p><%= image_tag(@product.image, style:'width:500px; height:500px;')%></p>
 <p><b>description: </b><%= @product.description %></p>
 <p><b>Price: </b><%= @product.price %></p>
 <p><%= link_to "Відредагувати", edit_product_path(@product) %></p>
