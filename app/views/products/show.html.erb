@@ -1,0 +1,9 @@
+<h1>Продукт</h1>
+<p><b><%= @product.name %></b></p>
+<p><b>description: </b><%= @product.description %></p>
+<p><b>Price: </b><%= @product.price %></p>
+<p><%= link_to "Відредагувати", edit_product_path(@product) %></p>
+<div>
+  <%= button_to 'Видалити продукт', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<p><%= link_to "Всі продукти", products_path %></p>
