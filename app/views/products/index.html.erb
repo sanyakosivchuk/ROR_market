@@ -4,4 +4,6 @@
   <p><%= link_to "Продукт #{product.name}", product_path(product.id) %></p>
 <% end %>
 
-<p><%= link_to "Добавити продукт", new_product_path %></p> 
+<% if current_user.admin? %>
+  <p><%= link_to "Добавити продукт", new_product_path %></p> 
+<%end%>
