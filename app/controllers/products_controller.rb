@@ -24,6 +24,12 @@ class ProductsController < ApplicationController
     redirect_to products_path, notice: 'Продукт видалено'
   end
 
+  def remove_image
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge_later
+    redirect_back(fallback_location: request.referer)
+  end
+
   def show
     @product = Product.find(params[:id])
   end
@@ -42,6 +48,6 @@ class ProductsController < ApplicationController
   
    private
   def product_params
-    params.require(:product).permit(:name, :description, :price)
+    params.require(:product).permit(:name, :description, :price, images: [])
   end
 end
