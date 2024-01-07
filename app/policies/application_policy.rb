@@ -17,23 +17,23 @@ class ApplicationPolicy
   end
 
   def create?
-  true
+    true
   end
 
   def new?
-  true
+    true
   end
 
   def update?
-  true
+    true
   end
 
   def edit?
-  true
+    true
   end
 
   def destroy?
-  true
+    true
   end
 
   class Scope

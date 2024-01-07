@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
@@ -8,7 +10,7 @@ class ProductsController < ApplicationController
     end
     authorize @product
   end
-  
+
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
@@ -22,7 +24,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-  
+
     redirect_to products_path, notice: 'Продукт видалено'
     authorize @product
   end
@@ -51,8 +53,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     authorize @product
   end
-  
-   private
+
+  private
+
   def product_params
     params.require(:product).permit(:name, :description, :price, images: [])
   end
