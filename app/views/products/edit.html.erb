@@ -7,8 +7,14 @@
     <p><%= form.text_area :description, rows: 1  %></p>
     <p><%= form.label :price, 'Ціна' %></p>
     <p><%= form.text_field :price%></p>
-    <p><%= form.label "Select photo" %></p>
-    <%= form.file_field :image %>
+    <p><%= form.label :images, "Select photo" %></p>
+    <% if @product.images.attached? %>
+      <% @product.images.each do |image| %>
+        <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+        <%= image_tag(image, style: 'width:300px; height:300px;') %>
+      <% end %>
+    <% end %>
+    <%= form.file_field :images, multiple: true %>
     <p><%= form.submit 'Зберегти зміни' %></p>
   <% end %>
   
