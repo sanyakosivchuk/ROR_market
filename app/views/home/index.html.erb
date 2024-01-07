@@ -6,6 +6,7 @@
     <%= link_to "Sign up", new_user_registration_path%>
   <%else%>
     <p>Hello <%=current_user.email%></p>
+    <p>You are a [<%= current_user.role %>]</p>
     <%= button_to "Log out", destroy_user_session_path, method: :delete%>
   <%end%>
 </div>

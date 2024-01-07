@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
     else
       render :new
     end
+    authorize @product
   end
   
   def update
@@ -15,6 +16,7 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
+    authorize @product
   end
 
   def destroy
@@ -22,12 +24,14 @@ class ProductsController < ApplicationController
     @product.destroy
   
     redirect_to products_path, notice: 'Продукт видалено'
+    authorize @product
   end
 
   def remove_image
     @image = ActiveStorage::Attachment.find(params[:id])
     @image.purge_later
     redirect_back(fallback_location: request.referer)
+    authorize @product
   end
 
   def show
@@ -40,10 +44,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def edit
     @product = Product.find(params[:id])
+    authorize @product
   end
   
    private
