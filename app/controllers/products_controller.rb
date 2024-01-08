@@ -30,7 +30,8 @@ class ProductsController < ApplicationController
   end
 
   def remove_image
-    @image = ActiveStorage::Attachment.find(params[:id])
+    @image = ActiveStorage::Attachment.find(params[:image_id])
+    @product = @image.record
     @image.purge_later
     redirect_back(fallback_location: request.referer)
     authorize @product
