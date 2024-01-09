@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :set_categories
   def create
     @product = Product.new(product_params)
     if @product.save
@@ -58,6 +59,10 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, images: [])
+    params.require(:product).permit(:name, :description, :category_id, :price, images: [])
+  end
+
+  def set_categories
+    @categories = Category.all.all.order(:name)
   end
 end
