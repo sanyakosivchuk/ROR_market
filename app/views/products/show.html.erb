@@ -13,14 +13,14 @@
 <%end%>
 
 <p><b>description: </b><%= @product.description %></p>
+<p><b>Category: </b><%= link_to @product.category&.name, @product.category %></p>
 <p><b>Price: </b><%= @product.price %></p>
 <% if current_user %>
   <% if current_user.admin? %>
   <p><%= link_to "Відредагувати", edit_product_path(@product) %></p>
-<%end%>
-<div>
   <%= button_to 'Видалити продукт', product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %>
-</div>
+<%end%>
+
 <%end%>
 <p><%= link_to "Всі продукти", products_path %></p>
 

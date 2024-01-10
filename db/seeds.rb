@@ -8,3 +8,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Category.create(name: "Ноутбуки та комп'ютери")
+Category.create(name: "Побутова техніка")
+Category.create(name: "Одяг, взуття та прикраси")

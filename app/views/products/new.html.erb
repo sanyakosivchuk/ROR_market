@@ -3,11 +3,13 @@
 <%= form_with model: @product do |form| %>
   <p><%= form.label :name, 'Назва продукта' %></p>
   <p><%= form.text_field :name%></p>
-  <p><%= form.label :description %></p>
+  <p><%= form.label :description, 'Опис' %></p>
   <p><%= form.text_area :description, rows: 1  %></p>
+  <p>Категорія</p>
+  <p><%= form.select :category_id, options_for_select(@categories.collect { |cat| [cat.name, cat.id]})%>
   <p><%= form.label :price, 'Ціна' %></p>
   <p><%= form.text_field :price%></p>
-  <p><%= form.label :images, "Select photo" %></p>
+  <p><%= form.label :images, 'Оберіть фото' %></p>
   <% if @product.images.attached? %>
     <% @product.images.each do |image| %>
       <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
