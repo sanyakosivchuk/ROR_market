@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'search', to: "search#index"
   resources :categories
   devise_for :users
 

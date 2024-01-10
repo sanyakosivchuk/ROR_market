@@ -1,0 +1,4 @@
+<%= search_form_for(@query, url: search_path) do |f| %>
+  <%= f.search_field :name_or_description_or_price_eq, placeholder: "Search..." %>
+  <%= f.submit "Search!" %>
+<% end %>
