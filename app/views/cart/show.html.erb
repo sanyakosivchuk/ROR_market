@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "cart" do %>
+  <h1><b>Cart</b></h1>
+
+  <% if @cart.orderables.count > 0 %>
+    <% @cart.orderables.each do |orderable| %>
+      <% product = orderable.product %>
+      <p><b><%= product.name %></b></p>
+      
+      <% if product.images.attached? %>
+        <%= image_tag(product.images.first, style: 'width:300px; height:300px;') %>
+      <% end %>
+      
+      <p>Quantity: <%= orderable.quantity %></p>
+      <p><b>Price: </b><%= product.price %></p>
+
+      <%= form_with(url: cart_remove_path) do |f| %>
+        <%= f.hidden_field :id, value: orderable.id %>
+        <%= f.submit "Remove from cart" %>
+      <% end %>
+    <% end %>
+    <p> Total price: <%= total_price %></p>
+  <% else %>
+    <p>Your cart is empty</p>
+  <% end %>
+
+<% end %>
+

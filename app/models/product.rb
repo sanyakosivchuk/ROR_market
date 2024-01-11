@@ -7,7 +7,9 @@ class Product < ApplicationRecord
   validates :category_id, presence: true
   validates :price, presence: true
   has_many_attached :images
-
+  has_many :orderables
+  has_many :carts, through: :orderables
+  
   def self.ransackable_attributes(auth_object = nil)
     %w[category category_id created_at description id id_value name price updated_at]
   end
@@ -15,4 +17,5 @@ class Product < ApplicationRecord
   def self.ransackable_associations(auth_object = nil)
     %w[category images_attachments images_blobs]
   end
+  
 end
