@@ -3,6 +3,9 @@
 Rails.application.routes.draw do
   get 'search', to: "search#index"
   resources :categories
+  get 'cart', to: 'cart#show'
+  post 'cart/add'
+  post 'cart/remove'
   devise_for :users
 
   root to: 'products#index'
